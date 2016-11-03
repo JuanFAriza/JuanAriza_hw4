@@ -21,15 +21,19 @@ int main(void){
 
   double *V; // Matriz de potencial electrico presente
   double *Vfuturo; // Matriz de potencial electrico futuro
+  double *Ex; // Matriz de campo electrico en x
+  double *Ey; // Matriz de campo electrico en y
 
   V = malloc(n*n*sizeof(double));
   Vfuturo = malloc(n*n*sizeof(double));
+  Ex = malloc(n*n*sizeof(double));
+  Ey = malloc(n*n*sizeof(double));
 
   for (i=0;i<n;i++){ // Inicializa en 0 las columnas en el borde pres. y fut.
     Vfuturo[n*i+0] = V[n*i+0] = 0;
     Vfuturo[n*i+n-1] = V[n*i+n-1] = 0;
   }
-  for (j=0;j<n;j++){ // Inicializa en 0 las filas en el borde
+  for (j=0;j<n;j++){ // Inicializa en 0 las filas en el borde pres. y fut.
     Vfuturo[n*0+j] = V[n*0+j] = 0;
     Vfuturo[n*(n-1)+j] = V[n*(n-1)+j] = 0;
   }
@@ -59,6 +63,25 @@ int main(void){
     for (j=j0Placa;j<jfPlaca+1;j++){ // Fija el voltaje en las placas
       Vfuturo[n*iPlaca1+j] = V[n*iPlaca1+j] = -V0/2;
       Vfuturo[n*iPlaca2+j] = V[n*iPlaca2+j] = V0/2;
+    }
+  }
+
+  for (i=0;i<n;i++){ // Calcula el campo Ex en las columnas en el borde
+    Ex[n*i+0] = -(V[n*i+1] - V[n*i+0])/h;
+    Ex[n*i+n-1] = -(V[n*i+n-1] - V[n*i+n-2])/h;
+  }
+  for (i=0;i<n;i++){ // Calcula el campo Ex en el resto de columnas
+    for (j=1;j<n-1;j++){
+      Ex[n*i+j] = -(V[n*i+j+1] - V[n*i+j-1])/(2*h);
+    }
+  }
+  for (j=0;j<n;j++){ // Calcula el campo Ey en las filas en el borde
+    Ey[n*0+j] = -(V[n*1+j] - V[n*0+j])/h;
+    Ey[n*(n-1)+j] = -(V[n*(n-1)+j] - V[n*(n-2)+j])/h = 0;
+  }
+  for (i=1;i<n-1;i++){  // Calcula el campo Ey en el resto de filas
+    for (j=0;j<n;j++){
+      Ey[n*i+j] = -(V[n*(i+1)+j] - V[n*(i-1)+j])/(2*h);
     }
   }
 
