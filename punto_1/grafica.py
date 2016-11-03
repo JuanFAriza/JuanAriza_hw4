@@ -23,6 +23,7 @@ for dato in datos:
 V = np.array(medidas[0:250],dtype='float')
 Ex = np.array(medidas[250:500],dtype='float')
 Ey = np.array(medidas[500:],dtype='float')
+
 x = np.linspace(0,0.05,250)
 y = -x
 
