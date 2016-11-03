@@ -62,8 +62,13 @@ int main(void){
       printf("\n");
     }
   }
-  for (iter=0;iter<num_muestras;iter++){
+  for (iter=0;iter<num_muestras;iter++){ // Imprime los tiempos en que se tomo muestra
     printf("%f ",iter*inter_muestra*delta_t);
+  }
+  printf("\n");
+  
+  for (i=0;i<n_puntos;i++){ // Imprime las posiciones de cada punto
+    printf("%f ",i*delta_x);
   }
   return 0;
 }
