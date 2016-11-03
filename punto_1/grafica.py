@@ -28,6 +28,6 @@ y = -x
 
 plt.imshow(V,extent=[0,0.05,-0.05,0])
 plt.streamplot(x,y,Ex,Ey,density=1.2)
-plt.show()
 
 archivo = 'placas.pdf'
+plt.savefig(archivo,format='pdf',transparent=True)
