@@ -9,7 +9,6 @@ try:
     datos = []
     for linea in lector: # Agrega cada linea a la lista de datos
         datos.append(linea)
-
 finally:
     file.close()
 
