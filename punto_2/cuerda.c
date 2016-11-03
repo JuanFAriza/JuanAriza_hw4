@@ -19,7 +19,7 @@ int main(void){
   double c = pow((T/rho),0.5);
   double r = c*delta_t/delta_x;
   int num_iter = (int)(t_fin/delta_t); // Numero de iteraciones que se deben realizar para llegar de t_ini a t_fin
-  int inter_muestra = (int)((float)num_iter/(num_muestras)); // Cantidad de iteraciones antes de la siguiente muestra
+  int inter_muestra = (int)((float)num_iter/(num_muestras - 1)); // Cantidad de iteraciones antes de la siguiente muestra
 
   double *u_pas;
   double *u_pres;
@@ -61,6 +61,9 @@ int main(void){
       }
       printf("\n");
     }
+  }
+  for (iter=0;iter<num_muestras;iter++){
+    printf("%f ",iter*inter_muestra*delta_t);
   }
   return 0;
 }
