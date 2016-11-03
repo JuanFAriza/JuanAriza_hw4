@@ -27,6 +27,10 @@ Ey = np.array(medidas[500:],dtype='float')
 x = np.linspace(0,0.05,250)
 y = -x
 
+ax = plt.axes()
+ax.set_xlim([0,0.05])
+ax.set_ylim([-0.05,0])
+
 plt.imshow(V,extent=[0,0.05,-0.05,0])
 plt.streamplot(x,y,Ex,Ey,density=1.2)
 
