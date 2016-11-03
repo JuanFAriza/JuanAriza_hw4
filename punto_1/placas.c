@@ -77,7 +77,7 @@ int main(void){
   }
   for (j=0;j<n;j++){ // Calcula el campo Ey en las filas en el borde
     Ey[n*0+j] = -(V[n*1+j] - V[n*0+j])/h;
-    Ey[n*(n-1)+j] = -(V[n*(n-1)+j] - V[n*(n-2)+j])/h = 0;
+    Ey[n*(n-1)+j] = -(V[n*(n-1)+j] - V[n*(n-2)+j])/h;
   }
   for (i=1;i<n-1;i++){  // Calcula el campo Ey en el resto de filas
     for (j=0;j<n;j++){
@@ -87,7 +87,7 @@ int main(void){
 
   for (i=0;i<n;i++){
     for (j=0;j<n;j++){
-      printf("%.2f ",V[n*i+j]);
+      printf("%.2f ",Ex[n*i+j]);
     }
     printf("\n");
   }
