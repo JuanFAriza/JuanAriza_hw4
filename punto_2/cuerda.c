@@ -8,7 +8,7 @@
 #define t_ini (double)0
 #define t_fin (double)200
 #define num_muestras 100
-#define n_puntos 1000 // Cantidad de puntos en que se divide la cuerda
+#define n_puntos (int)pow(10,4) // Cantidad de puntos en que se divide la cuerda
 
 int main(void){
   int i;
