@@ -76,18 +76,30 @@ int main(void){
     }
   }
   for (j=0;j<n;j++){ // Calcula el campo Ey en las filas en el borde
-    Ey[n*0+j] = -(V[n*1+j] - V[n*0+j])/h;
-    Ey[n*(n-1)+j] = -(V[n*(n-1)+j] - V[n*(n-2)+j])/h;
+    Ey[n*0+j] = (V[n*1+j] - V[n*0+j])/h;
+    Ey[n*(n-1)+j] = (V[n*(n-1)+j] - V[n*(n-2)+j])/h;
   }
   for (i=1;i<n-1;i++){  // Calcula el campo Ey en el resto de filas
     for (j=0;j<n;j++){
-      Ey[n*i+j] = -(V[n*(i+1)+j] - V[n*(i-1)+j])/(2*h);
+      Ey[n*i+j] = (V[n*(i+1)+j] - V[n*(i-1)+j])/(2*h);
     }
   }
 
-  for (i=0;i<n;i++){
+  for (i=0;i<n;i++){ // Imprime Voltaje
     for (j=0;j<n;j++){
-      printf("%.2f ",Ex[n*i+j]);
+      printf("%f ",V[n*i+j]);
+    }
+    printf("\n");
+  }
+  for (i=0;i<n;i++){ // Imprime campo Ex
+    for (j=0;j<n;j++){
+      printf("%f ",Ex[n*i+j]);
+    }
+    printf("\n");
+  }
+  for (i=0;i<n;i++){ // Imprime campo Ey
+    for (j=0;j<n;j++){
+      printf("%f ",Ey[n*i+j]);
     }
     printf("\n");
   }
