@@ -75,6 +75,7 @@ int main(void){
       Ex[n*i+j] = -(V[n*i+j+1] - V[n*i+j-1])/(2*h);
     }
   }
+  
   for (j=0;j<n;j++){ // Calcula el campo Ey en las filas en el borde
     Ey[n*0+j] = (V[n*1+j] - V[n*0+j])/h;
     Ey[n*(n-1)+j] = (V[n*(n-1)+j] - V[n*(n-2)+j])/h;
