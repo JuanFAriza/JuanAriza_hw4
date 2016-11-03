@@ -30,6 +30,7 @@ y = -x
 ax = plt.axes()
 ax.set_xlim([0,0.05])
 ax.set_ylim([-0.05,0])
+ax.set_title('Potencial y campo de placas finitas')
 
 plt.imshow(V,extent=[0,0.05,-0.05,0])
 plt.streamplot(x,y,Ex,Ey,density=1.2)
